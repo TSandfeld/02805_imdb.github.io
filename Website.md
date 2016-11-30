@@ -54,7 +54,24 @@ To identify communities in this network we have used the Louvain community detec
 
 ![Community genres](./images/genre_com_piecharts.png)
 
+Comment on findings in the above.
+
+Gross/rating
+
+Director/Actor rating - correlation
+![Dicetor Actor Correlation](./images/Director_r_cast_r_scat.png)
+High positive linear correlation! - some due to the fact that the actors obviously are in some of the same movies as the directors. 
+
+There is only a small positive linear correlation between the duration of a movie and its rating. No real tendency but longer movies have a small advantage..
+![Duration rating Correlation](./images/corr_duration_rating_scatter.png)
+
+Actor network
+...
+
+
+
 ## Text analysis
+
 
 ## <a name="download-sets"></a> Download Datasets
 So our dataset mainly comprises of a dataset from [kaggle.com](https://www.kaggle.com/deepmatrix/imdb-5000-movie-dataset)
