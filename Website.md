@@ -28,7 +28,7 @@ As we can see from the distribution of the IMDb ratings they are uniformally dis
 
 Most people would preferrably watch movies with rating of 7 or above. As many people check the rating af a movie before they decide to watch it, the IMDb rating actually has quite some influence as to which movies are watched and which that are not. The ratings are regulated through the votes by numerous different users, and eventhough you don't know who actually voted the movie, the number of voters usually make the rating quite trustworthy.
 
-However, anyone could go to IMDb's website and look up the individual movieratings, so let's instead see how the actors are rated.
+Lets look a some more data ... as anyone could go to IMDb's website and look up the individual movieratings, it would be more interesting how the actors are rated.
 For all the movies an actor/actress has been part of, we will average their rating and plot it. We will restrict the plot to the 10 best and 10 worst actors who's been part of more than 10 movies. This gives us the following, where we can see some familiar names.
 
 ![Actor Rating](./images/Actor_rating.png)
@@ -57,6 +57,7 @@ To identify communities in this network we have used the Louvain community detec
 Comment on findings in the above.
 
 Gross/rating
+![Gross rating](./images/Movie_rating_gross.png)
 
 Director/Actor rating - correlation
 ![Dicetor Actor Correlation](./images/Director_r_cast_r_scat.png)
@@ -70,8 +71,35 @@ Actor network
 
 
 
-## Text analysis
+## Text analysis of manuscripts
+We've looked quite a bit on how different attributes relate in our network of movies/actors. Let's now look at some manuscripts. 
+Using a technique called Term Frequency - Inverse Document Frequency, or TF-IDF, we can figure how important a word in a script is for our total collection of scripts. So by doing this we can find the words that are most important for each genre of movies in our dataset.
 
+![Wordcloud_1](./images/genre_wordcloud_1.png)
+![Wordcloud_1](./images/genre_wordcloud_2.png)
+
+As mentioned in the introduction, we have about ~1200 scripts and ~5000 movies in our dataset. This means that we don't have a manuscript for each movie in our dataset, which leads to a margin of error in the above wordclouds. For example, raspberries may not be as important a term in the whole genre of romance films, as it is for the genre in our dataset.
+
+Let us look at the sentiment of the scripts we have. Using the LabMT wordlist[^labmt], which provides a sentiment score for a lot of english words, we can figure out how positive/negative a script is.
+
+Having calculated the sentiment of the scripts we can see if it relates in any way to the success of a movie. For example, let's see if there is a connection between the sentiment and the IMDb rating of a movie ..  
+
+![Genre rating gross](./images/Movie_rating_senti.png)
+
+On the plot we can see that there is *very little*, if any, correlation between a movie's IMDb rating and the sentiment of the movie's script. This does make sense as a lot of very well liked movies are drama and action movie's which tend to be more intense in the language than other movies.
+
+### Do a movie gross vs sentiment *here*
+
+Instead of only looking at movies let's look at actors. Some actor's are more featured in one genre then others, so let's see if there is a relation between a actors sentiment and their IMDb rating. We will calculate the actor's sentiment as an average of the sentiments of the scripts for the movies he has been in. We will be looking at actors who has been in more than 5 movie's, so there is some data to work with. 
+
+One this bar graph we see some familiar names, who we might associate with being good actors, suchs as Robert De Niro and Joseph Gordon-Levitt.
+
+![Actor_senti](./images/Actor_senti_10.png)
+
+If we correlate their sentiment to their IMDb rating we get this:
+![Actor senti rating](./images/Actor_senti_imdb_rating.png)
+
+Again, it does not seem that the sentiment of the scripts has much to do with the rating of the actor.
 
 ## <a name="download-sets"></a> Download Datasets
 So our dataset mainly comprises of a dataset from [kaggle.com](https://www.kaggle.com/deepmatrix/imdb-5000-movie-dataset)
@@ -79,3 +107,5 @@ So our dataset mainly comprises of a dataset from [kaggle.com](https://www.kaggl
 ## References
 
 [^wiki]: Wikipedia about IMDb: [https://en.wikipedia.org/wiki/IMDb](https://en.wikipedia.org/wiki/IMDb)
+
+[^labmt]: Wordlist article: [http://journals.plos.org/plosone/article?id=10.1371/journal.pone.0026752](http://journals.plos.org/plosone/article?id=10.1371/journal.pone.0026752)
