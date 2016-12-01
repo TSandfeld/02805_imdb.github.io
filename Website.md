@@ -97,6 +97,7 @@ One this bar graph we see some familiar names, who we might associate with being
 ![Actor_senti](./images/Actor_senti_10.png)
 
 If we correlate their sentiment to their IMDb rating we get this:
+
 ![Actor senti rating](./images/Actor_senti_imdb_rating.png)
 
 Again, it does not seem that the sentiment of the scripts has much to do with the rating of the actor.
