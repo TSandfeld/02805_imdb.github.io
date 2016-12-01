@@ -359,7 +359,7 @@ As we can see from the distribution of the IMDb ratings they are uniformally dis
 
 <p>Most people would preferrably watch movies with rating of 7 or above. As many people check the rating af a movie before they decide to watch it, the IMDb rating actually has quite some influence as to which movies are watched and which that are not. The ratings are regulated through the votes by numerous different users, and eventhough you don&#39;t know who actually voted the movie, the number of voters usually make the rating quite trustworthy.</p>
 
-<p>However, anyone could go to IMDb&#39;s website and look up the individual movieratings, so let&#39;s instead see how the actors are rated.
+<p>Lets look a some more data ... as anyone could go to IMDb&#39;s website and look up the individual movieratings, it would be more interesting how the actors are rated.
 For all the movies an actor/actress has been part of, we will average their rating and plot it. We will restrict the plot to the 10 best and 10 worst actors who&#39;s been part of more than 10 movies. This gives us the following, where we can see some familiar names.</p>
 
 <p><img src="./images/Actor_rating.png" alt="Actor Rating"></p>
@@ -385,13 +385,57 @@ Here the distribution is plotted on a log-scale.
 
 <p><img src="./images/genre_com_piecharts.png" alt="Community genres"></p>
 
-<h2 id="toc_2">Text analysis</h2>
+<p>Comment on findings in the above.</p>
 
-<h2 id="toc_3"><a name="download-sets"></a> Download Datasets</h2>
+<p>Gross/rating
+<img src="./images/Movie_rating_gross.png" alt="Gross rating"></p>
+
+<p>Director/Actor rating - correlation
+<img src="./images/Director_r_cast_r_scat.png" alt="Dicetor Actor Correlation">
+High positive linear correlation! - some due to the fact that the actors obviously are in some of the same movies as the directors. </p>
+
+<p>There is only a small positive linear correlation between the duration of a movie and its rating. No real tendency but longer movies have a small advantage..
+<img src="./images/corr_duration_rating_scatter.png" alt="Duration rating Correlation"></p>
+
+<p>Actor network
+...</p>
+
+<h2 id="toc_2">Text analysis of manuscripts</h2>
+
+<p>We&#39;ve looked quite a bit on how different attributes relate in our network of movies/actors. Let&#39;s now look at some manuscripts. 
+Using a technique called Term Frequency - Inverse Document Frequency, or TF-IDF, we can figure how important a word in a script is for our total collection of scripts. So by doing this we can find the words that are most important for each genre of movies in our dataset.</p>
+
+<p><img src="./images/genre_wordcloud_1.png" alt="Wordcloud_1">
+<img src="./images/genre_wordcloud_2.png" alt="Wordcloud_1"></p>
+
+<p>As mentioned in the introduction, we have about ~1200 scripts and ~5000 movies in our dataset. This means that we don&#39;t have a manuscript for each movie in our dataset, which leads to a margin of error in the above wordclouds. For example, raspberries may not be as important a term in the whole genre of romance films, as it is for the genre in our dataset.</p>
+
+<p>Let us look at the sentiment of the scripts we have. Using the LabMT wordlist<sup id="fnref2"><a href="#fn2" rel="footnote">2</a></sup>, which provides a sentiment score for a lot of english words, we can figure out how positive/negative a script is.</p>
+
+<p>Having calculated the sentiment of the scripts we can see if it relates in any way to the success of a movie. For example, let&#39;s see if there is a connection between the sentiment and the IMDb rating of a movie ..  </p>
+
+<p><img src="./images/Movie_rating_senti.png" alt="Genre rating gross"></p>
+
+<p>On the plot we can see that there is <em>very little</em>, if any, correlation between a movie&#39;s IMDb rating and the sentiment of the movie&#39;s script. This does make sense as a lot of very well liked movies are drama and action movie&#39;s which tend to be more intense in the language than other movies.</p>
+
+<h3 id="toc_3">Do a movie gross vs sentiment <em>here</em></h3>
+
+<p>Instead of only looking at movies let&#39;s look at actors. Some actor&#39;s are more featured in one genre then others, so let&#39;s see if there is a relation between a actors sentiment and their IMDb rating. We will calculate the actor&#39;s sentiment as an average of the sentiments of the scripts for the movies he has been in. We will be looking at actors who has been in more than 5 movie&#39;s, so there is some data to work with. </p>
+
+<p>One this bar graph we see some familiar names, who we might associate with being good actors, suchs as Robert De Niro and Joseph Gordon-Levitt.</p>
+
+<p><img src="./images/Actor_senti_10.png" alt="Actor_senti"></p>
+
+<p>If we correlate their sentiment to their IMDb rating we get this:
+<img src="./images/Actor_senti_imdb_rating.png" alt="Actor senti rating"></p>
+
+<p>Again, it does not seem that the sentiment of the scripts has much to do with the rating of the actor.</p>
+
+<h2 id="toc_4"><a name="download-sets"></a> Download Datasets</h2>
 
 <p>So our dataset mainly comprises of a dataset from <a href="https://www.kaggle.com/deepmatrix/imdb-5000-movie-dataset">kaggle.com</a></p>
 
-<h2 id="toc_4">References</h2>
+<h2 id="toc_5">References</h2>
 
 <div class="footnotes">
 <hr>
@@ -399,6 +443,10 @@ Here the distribution is plotted on a log-scale.
 
 <li id="fn1">
 <p>Wikipedia about IMDb: <a href="https://en.wikipedia.org/wiki/IMDb">https://en.wikipedia.org/wiki/IMDb</a>&nbsp;<a href="#fnref1" rev="footnote">&#8617;</a></p>
+</li>
+
+<li id="fn2">
+<p>Wordlist article: <a href="http://journals.plos.org/plosone/article?id=10.1371/journal.pone.0026752">http://journals.plos.org/plosone/article?id=10.1371/journal.pone.0026752</a>&nbsp;<a href="#fnref2" rev="footnote">&#8617;</a></p>
 </li>
 
 </ol>
