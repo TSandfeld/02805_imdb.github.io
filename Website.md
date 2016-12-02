@@ -76,6 +76,20 @@ To identify communities in this network we have used the Louvain community detec
 Comment on findings in the above.
 
 Director/Actor rating - correlation
+![Top directors](./images/Director_rating_10.png)
+
+![Director profile 1](./images/Director_actor_occur_top_1.png)
+
+![Director profile 2](./images/Director_actor_occur_top_2.png)
+
+![Director profile 3](./images/Director_actor_occur_top_3.png)
+
+![Director profile 4](./images/Director_actor_occur_bot_1.png)
+
+![Director profile 5](./images/Director_actor_occur_bot_2.png)
+
+![Director profile 6](./images/Director_actor_occur_bot_3.png)
+
 ![Dicetor Actor Correlation](./images/Director_r_cast_r_scat.png)
 High positive linear correlation! - some due to the fact that the actors obviously are in some of the same movies as the directors. 
 
