@@ -76,7 +76,10 @@ To identify communities in this network we have used the Louvain community detec
 
 ![Community genres](./images/genre_com_piecharts.png)
 
-As you can see, most communities in our network
+As you can see, most communities in our network consist of multiple genres which tells us that generally speaking actors do not tend to be one-sided considering the film genres they are in.
+From the plot we find that documentaries tend to use the same group of actors as they represent more than 3/4 of one of the communities. So this 1 community seems to stand out. 
+Eventhough there are some differences between the other 11 communities they are quite representative of the amount of movies in each genre in total. E.g comedy, drama and action take up big chunks for every community those genres being the largest. 
+These discoveries lead to the conclusion that most movies have quite versatile actors who appear in a lot of different movie genres.  
 
 Director/Actor rating - correlation
 ![Top directors](./images/Director_rating_10.png)
