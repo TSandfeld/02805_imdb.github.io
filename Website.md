@@ -32,7 +32,7 @@ Lets look a some more data ... as anyone could go to IMDb's website and look up 
 For all the movies an actor/actress has been part of, we will average their rating and plot it. We will restrict the plot to the 10 best and 10 worst actors who's been part of more than 10 movies. This gives us the following, where we can see some familiar names.
 
 ![Actor Rating](./images/Actor_rating.png)
-So it seems that some actors actually receive great ratings througout a lot of movies. Choosing the high-rated actors for a movie will therefore probably give your movie a good rating. We will discuss this topic in depth later on where we compare the director fo the movie with the actors to see if similarities on their rating appear.
+So it seems that some actors actually receive great ratings througout a lot of movies. Choosing the high-rated actors for a movie will therefore probably give your movie a good rating. We will discuss this topic in depth later on when we compare the director of the movie with the actors to see how the director influences the rating and what correlation there is between a directors rating and the rating of his cast.
 
 
 Of course this does reflect the rating of the movie as a whole more than the individual actor's performance in it. But it would not be unfair to assume that a movie's rating depends on the performance of the lead actor/actress - so the ratings are usable.
@@ -46,10 +46,11 @@ There is a *small* correlation here. No movie grossing more than 400 mil. $ has 
 There's a lot of different genres in the movie world and there's bound to be some interesting connections to the films. First let's see how the most appreciated genres of movie world compares to how much the genres gross worldwide.
 
 ![Genre Rating Gross](./images/Genre_rating_gross.png)
+
 From comparing the two plots we can make some interesting discoveries. E.g. Film-noir which has the highest average IMDb score is actually the film genre with the lowest gross. To get a clearer view on whether there is a correlation between the gross and rating we have plotted the average rating versus the average gross for each genre in a scatter plot and with a linear fit.
 
 ![Average rating gross correlation](./images/genre_rating_gross_avg_scat.png)
-The correlation coefficient for the two averages is actually -0.523.
+The correlation coefficient for the two averages is actually **-0.523!**
 So if you want to earn millions of dollars you should not expect to also receive a high IMDb rating. This a bit surprising and tells us that the correlation between a movie's rating and its' gross is actually negative. The IMDb rating is thereby not the only indicator as to whether your movie is successful or not. 
 
 This gives a rather unusual result as the best rated genre is the genre that is least profitable! But in the case of our dataset this is probably just an anomaly as it doesn't make sense that whole genre of Film-Noir hasn't grossed a single dollar.
@@ -68,12 +69,17 @@ Analysing this network, we see that the distribution of degrees (number of movie
 Here the distribution is plotted on a log-scale.
 ![Degree distribution of movie Graph](./images/movie_graph_degree_distribution.png)
 
+
 ### Communities
 To identify communities in this network we have used the Louvain community detection algorithm which identifies communities in a graph, communities being movies that are all closely connected with each other but not so much with other communities. This algorithm found 13 communties in our network. One interesting aspect of this is to discover whether these communties actually correspond to the genres of the movies. We have plotted how much one community consists of the same genre.
 
+
 ![Community genres](./images/genre_com_piecharts.png)
 
-Comment on findings in the above.
+As you can see, most communities in our network consist of multiple genres which tells us that generally speaking actors do not tend to be one-sided considering the film genres they are in.
+From the plot we find that documentaries tend to use the same group of actors as they represent more than 3/4 of one of the communities. So this 1 community seems to stand out. 
+Eventhough there are some differences between the other 11 communities they are quite representative of the amount of movies in each genre in total. E.g comedy, drama and action take up big chunks for every community those genres being the largest. 
+These discoveries lead to the conclusion that most movies have quite versatile actors who appear in a lot of different movie genres.  
 
 Director/Actor rating - correlation
 ![Top directors](./images/Director_rating_10.png)
