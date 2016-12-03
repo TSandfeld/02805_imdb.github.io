@@ -73,28 +73,31 @@ Here the distribution is plotted on a log-scale.
 ### Communities
 To identify communities in this network we have used the Louvain community detection algorithm which identifies communities in a graph, communities being movies that are all closely connected with each other but not so much with other communities. This algorithm found 13 communties in our network. One interesting aspect of this is to discover whether these communties actually correspond to the genres of the movies. We have plotted how much one community consists of the same genre.
 
+![Genre Graph](./images/genre_graph.png)
 
-![Community genres](./images/genre_com_piecharts.png)
+![Community genres](./images/genre_com_piecharts_2.png)
 
 As you can see, most communities in our network consist of multiple genres which tells us that generally speaking actors do not tend to be one-sided considering the film genres they are in.
 From the plot we find that documentaries tend to use the same group of actors as they represent more than 3/4 of one of the communities. So this 1 community seems to stand out. 
 Eventhough there are some differences between the other 11 communities they are quite representative of the amount of movies in each genre in total. E.g comedy, drama and action take up big chunks for every community those genres being the largest. 
 These discoveries lead to the conclusion that most movies have quite versatile actors who appear in a lot of different movie genres.  
 
+
+### Director profiling
 Director/Actor rating - correlation
 ![Top directors](./images/Director_rating_10.png)
 
 ![Director profile 1](./images/Director_actor_occur_top_1.png)
 
-![Director profile 2](./images/Director_actor_occur_top_2.png)
+Director profile 2](./images/Director_actor_occur_top_2.png)
 
-![Director profile 3](./images/Director_actor_occur_top_3.png)
+Director profile 3](./images/Director_actor_occur_top_3.png)
 
 ![Director profile 4](./images/Director_actor_occur_bot_1.png)
 
-![Director profile 5](./images/Director_actor_occur_bot_2.png)
+Director profile 5](./images/Director_actor_occur_bot_2.png)
 
-![Director profile 6](./images/Director_actor_occur_bot_3.png)
+Director profile 6](./images/Director_actor_occur_bot_3.png)
 
 ![Dicetor Actor Correlation](./images/Director_r_cast_r_scat.png)
 High positive linear correlation! - some due to the fact that the actors obviously are in some of the same movies as the directors. 

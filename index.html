@@ -344,7 +344,7 @@ kbd {
 <h2 id="toc_0">Introduction</h2>
 
 <p>IMDb is the world&#39;s biggest online movie database, launched back in 1990. According to Wikipedia<sup id="fnref1"><a href="#fn1" rel="footnote">1</a></sup> IMDb contains more than 3.9 million movie/tv-show titles and 7.4 million personalities. With this data we will try to uncover some patterns and relationships between the best critically acclaimed and highest grossing movies of all time. We will use techniques from the world of network-, text- and data analysis to accomplish this.
-Although IMDb has millions of titles for us to play around with we don&#39;t have the computing power/time to go through all that data. So instead we are going to use a little less data - just under 5000 titles with all the relevant attributes such as cast, director, year, budget, domestic gross, genres, etc. We also gathered ~1200 moviescripts for text analysis, so we can look at patterns within those. The movies are from different decades, but they are mainly from the late 90&#39;s to recent years.</p>
+Although IMDb has millions of titles for us to play around with we don&#39;t have the computing power/time to go through all that data. So instead we are going to use a little less data - a little over 4000 titles with all the relevant attributes such as cast, director, year, budget, domestic gross, genres, etc. We also gathered ~1200 moviescripts for text analysis, so we can look at patterns within those. The movies are from different decades, but they are mainly from the late 90&#39;s to recent years.</p>
 
 <p>Should you be interested in working with our datasets, then please see the <a href="#download-sets">Download Dataset</a> section in the end.</p>
 
@@ -364,7 +364,7 @@ As we mentioned we have the IMDb rating in our dataset, so we can see the distri
 For all the movies an actor/actress has been part of, we will average their rating and plot it. We will restrict the plot to the 10 best and 10 worst actors who&#39;s been part of more than 10 movies. This gives us the following, where we can see some familiar names.</p>
 
 <p><img src="./images/Actor_rating.png" alt="Actor Rating">
-So it seems that some actors actually receive great ratings througout a lot of movies. Choosing the high-rated actors for a movie will therefore probably give your movie a good rating. We will discuss this topic in depth later on where we compare the director fo the movie with the actors to see if similarities on their rating appear.</p>
+So it seems that some actors actually receive great ratings througout a lot of movies. Choosing the high-rated actors for a movie will therefore probably give your movie a good rating. We will discuss this topic in depth later on when we compare the director of the movie with the actors to see how the director influences the rating and what correlation there is between a directors rating and the rating of his cast.</p>
 
 <p>Of course this does reflect the rating of the movie as a whole more than the individual actor&#39;s performance in it. But it would not be unfair to assume that a movie&#39;s rating depends on the performance of the lead actor/actress - so the ratings are usable.</p>
 
@@ -377,11 +377,12 @@ There is a <em>small</em> correlation here. No movie grossing more than 400 mil.
 
 <p>There&#39;s a lot of different genres in the movie world and there&#39;s bound to be some interesting connections to the films. First let&#39;s see how the most appreciated genres of movie world compares to how much the genres gross worldwide.</p>
 
-<p><img src="./images/Genre_rating_gross.png" alt="Genre Rating Gross">
-From comparing the two plots we can make some interesting discoveries. E.g. Film-noir which has the highest average IMDb score is actually the film genre with the lowest gross. To get a clearer view on whether there is a correlation between the gross and rating we have plotted the average rating versus the average gross for each genre in a scatter plot and with a linear fit.</p>
+<p><img src="./images/Genre_rating_gross.png" alt="Genre Rating Gross"></p>
+
+<p>From comparing the two plots we can make some interesting discoveries. E.g. Film-noir which has the highest average IMDb score is actually the film genre with the lowest gross. To get a clearer view on whether there is a correlation between the gross and rating we have plotted the average rating versus the average gross for each genre in a scatter plot and with a linear fit.</p>
 
 <p><img src="./images/genre_rating_gross_avg_scat.png" alt="Average rating gross correlation">
-The correlation coefficient for the two averages is actually -0.523.
+The correlation coefficient for the two averages is actually <strong>-0.523!</strong>
 So if you want to earn millions of dollars you should not expect to also receive a high IMDb rating. This a bit surprising and tells us that the correlation between a movie&#39;s rating and its&#39; gross is actually negative. The IMDb rating is thereby not the only indicator as to whether your movie is successful or not. </p>
 
 <p>This gives a rather unusual result as the best rated genre is the genre that is least profitable! But in the case of our dataset this is probably just an anomaly as it doesn&#39;t make sense that whole genre of Film-Noir hasn&#39;t grossed a single dollar.</p>
@@ -405,24 +406,31 @@ Here the distribution is plotted on a log-scale.
 
 <p>To identify communities in this network we have used the Louvain community detection algorithm which identifies communities in a graph, communities being movies that are all closely connected with each other but not so much with other communities. This algorithm found 13 communties in our network. One interesting aspect of this is to discover whether these communties actually correspond to the genres of the movies. We have plotted how much one community consists of the same genre.</p>
 
-<p><img src="./images/genre_com_piecharts.png" alt="Community genres"></p>
+<p><img src="./images/genre_graph.png" alt="Genre Graph"></p>
 
-<p>Comment on findings in the above.</p>
+<p><img src="./images/genre_com_piecharts_2.png" alt="Community genres"></p>
+
+<p>As you can see, most communities in our network consist of multiple genres which tells us that generally speaking actors do not tend to be one-sided considering the film genres they are in.
+From the plot we find that documentaries tend to use the same group of actors as they represent more than 3/4 of one of the communities. So this 1 community seems to stand out. 
+Eventhough there are some differences between the other 11 communities they are quite representative of the amount of movies in each genre in total. E.g comedy, drama and action take up big chunks for every community those genres being the largest. 
+These discoveries lead to the conclusion that most movies have quite versatile actors who appear in a lot of different movie genres.  </p>
+
+<h3 id="toc_6">Director profiling</h3>
 
 <p>Director/Actor rating - correlation
 <img src="./images/Director_rating_10.png" alt="Top directors"></p>
 
 <p><img src="./images/Director_actor_occur_top_1.png" alt="Director profile 1"></p>
 
-<p><img src="./images/Director_actor_occur_top_2.png" alt="Director profile 2"></p>
+<p>Director profile 2](./images/Director<em>actor</em>occur<em>top</em>2.png)</p>
 
-<p><img src="./images/Director_actor_occur_top_3.png" alt="Director profile 3"></p>
+<p>Director profile 3](./images/Director<em>actor</em>occur<em>top</em>3.png)</p>
 
 <p><img src="./images/Director_actor_occur_bot_1.png" alt="Director profile 4"></p>
 
-<p><img src="./images/Director_actor_occur_bot_2.png" alt="Director profile 5"></p>
+<p>Director profile 5](./images/Director<em>actor</em>occur<em>bot</em>2.png)</p>
 
-<p><img src="./images/Director_actor_occur_bot_3.png" alt="Director profile 6"></p>
+<p>Director profile 6](./images/Director<em>actor</em>occur<em>bot</em>3.png)</p>
 
 <p><img src="./images/Director_r_cast_r_scat.png" alt="Dicetor Actor Correlation">
 High positive linear correlation! - some due to the fact that the actors obviously are in some of the same movies as the directors. </p>
@@ -430,9 +438,9 @@ High positive linear correlation! - some due to the fact that the actors obvious
 <p>There is only a small positive linear correlation between the duration of a movie and its rating. No real tendency but longer movies have a small advantage..
 <img src="./images/corr_duration_rating_scatter.png" alt="Duration rating Correlation"></p>
 
-<h2 id="toc_6">Text analysis of manuscripts</h2>
+<h2 id="toc_7">Text analysis of manuscripts</h2>
 
-<h3 id="toc_7">Term Frequency</h3>
+<h3 id="toc_8">Term Frequency</h3>
 
 <p>We&#39;ve looked quite a bit on how different attributes relate in our network of movies/actors. Let&#39;s now look at some manuscripts. 
 Using a technique called Term Frequency - Inverse Document Frequency, or TF-IDF, we can figure how important a word in a script is for our total collection of scripts. So by doing this we can find the words that are most important for each genre of movies in our dataset.</p>
@@ -444,7 +452,7 @@ Using a technique called Term Frequency - Inverse Document Frequency, or TF-IDF,
 
 <p>As mentioned in the introduction, we have about ~1200 scripts and ~5000 movies in our dataset. This means that we don&#39;t have a manuscript for each movie in our dataset, which leads to a margin of error in the above wordclouds. For example, raspberries may not be as important a term in the whole genre of romance films, as it is for the genre in our dataset.</p>
 
-<h3 id="toc_8">Sentiment</h3>
+<h3 id="toc_9">Sentiment</h3>
 
 <p>Let us look at the sentiment of the scripts we have. Using the LabMT wordlist<sup id="fnref2"><a href="#fn2" rel="footnote">2</a></sup>, which provides a sentiment score for a lot of english words, we can figure out how positive/negative a script is. A low score like 5000 is pretty negative for a movie script, while a score like 100,000 i a very positive script.</p>
 
@@ -454,7 +462,7 @@ Using a technique called Term Frequency - Inverse Document Frequency, or TF-IDF,
 
 <p>On the plot we can see that there is <em>very little</em>, if any, correlation between a movie&#39;s IMDb rating and the sentiment of the movie&#39;s script. This does make sense as a lot of very well liked movies are drama and action movie&#39;s which tend to be more intense in the language than other movies.</p>
 
-<h3 id="toc_9">Do a movie gross vs sentiment <em>here</em> or not - der er kun omkring 600 film der passer til scripts og penge dict&#39;en og den plottet viser ikke så meget. Corcoeff på 0.171.</h3>
+<h3 id="toc_10">Do a movie gross vs sentiment <em>here</em> or not - der er kun omkring 600 film der passer til scripts og penge dict&#39;en og den plottet viser ikke så meget. Corcoeff på 0.171.</h3>
 
 <p>Instead of only looking at movies let&#39;s look at actors. Some actor&#39;s are more featured in one genre than others, so let&#39;s see if there is a relation between a actors sentiment and their IMDb rating. We will calculate the actor&#39;s sentiment as an average of the sentiments of the scripts for the movies he has been in. We will be looking at actors who has been in more than 5 movie&#39;s, so there is some data to work with. </p>
 
@@ -468,11 +476,11 @@ Using a technique called Term Frequency - Inverse Document Frequency, or TF-IDF,
 
 <p>Again, it does not seem that the sentiment of the scripts has much to do with the rating of the actor.</p>
 
-<h2 id="toc_10"><a name="download-sets"></a> Download Datasets</h2>
+<h2 id="toc_11"><a name="download-sets"></a> Download Datasets</h2>
 
 <p>So our dataset mainly comprises of a dataset from <a href="https://www.kaggle.com/deepmatrix/imdb-5000-movie-dataset">kaggle.com</a></p>
 
-<h2 id="toc_11">References</h2>
+<h2 id="toc_12">References</h2>
 
 <div class="footnotes">
 <hr>
