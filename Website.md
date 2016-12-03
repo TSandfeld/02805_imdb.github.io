@@ -75,6 +75,8 @@ To identify communities in this network we have used the Louvain community detec
 
 ![Genre Graph](./images/genre_graph.png)
 
+For each community we have plottet the genres in that community as a pie chart. 
+
 ![Community genres](./images/genre_com_piecharts_2.png)
 
 As you can see, most communities in our network consist of multiple genres which tells us that generally speaking actors do not tend to be one-sided considering the film genres they are in.
