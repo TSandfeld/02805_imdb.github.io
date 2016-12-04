@@ -14,7 +14,7 @@
 IMDb is the world's biggest online movie database, launched back in 1990. According to Wikipedia[^wiki] IMDb contains more than 3.9 million movie/tv-show titles and 7.4 million personalities. With this data we will try to uncover some patterns and relationships between the best critically acclaimed and highest grossing movies of all time. We will use techniques from the world of network-, text- and data analysis to accomplish this.
 Although IMDb has millions of titles for us to play around with we don't have the computing power/time to go through all that data. So instead we are going to use a little less data - a little over 4000 titles with all the relevant attributes such as cast, director, year, budget, domestic gross, genres, etc. We also gathered ~1200 moviescripts for text analysis, so we can look at patterns within those. The movies are from different decades, but they are mainly from the late 90's to recent years.
 
-Should you be interested in working with our datasets or just get a more detailed explanation, then please see the [Download Dataset](#download-sets) section in the end.
+Should you be interested in working with our datasets or just get a more detailed explanation, then please see the [Download Dataset](#download-sets) section at the end.
 
 ## Network analysis
 Let's begin exploring our datasets .. 
@@ -24,13 +24,13 @@ One important feature of IMDb's database is the **IMDb rating**, which is a nume
 ![Rating distribution](./images/rating_distribution.png)
 As we mentioned we have the IMDb rating in our dataset, so we can see the distribution of the IMDb ratings and see that they are uniformally distributed. The average of all the IMDb ratings is 6.3. 
 
-Most people would preferrably watch movies with rating of 7 or above. As many people check the rating af a movie before they decide to watch it, the IMDb rating actually has quite some influence as to what movies are watched and which that are not. The ratings are regulated through the votes by numerous different users, and eventhough you don't know who actually voted the movie, the number of voters usually make the rating quite trustworthy as well as balance the rating.
+Most people would preferrably watch movies with rating of 7 or above. As many people check the rating of a movie before they decide to watch it, the IMDb rating actually has quite some influence as to what movies are watched and which that are not. The ratings are regulated through the votes by numerous different users, and eventhough you don't know who actually voted the movie, the number of voters usually make the rating quite trustworthy and balance the rating.
 
 Lets look a some more data ... as anyone could go to IMDb's website and look up the individual movie ratings, it would be more interesting how the actors are rated.
 For all the movies an actor/actress has been part of, we will average their rating and plot it. We will restrict the plot to the 10 best and 10 worst actors who's been part of more than 10 movies. This gives us the following, where we can see some familiar names.
 
 ![Actor Rating](./images/Actor_rating.png)
-So it seems that some actors actually receive great ratings througout a lot of movies. Choosing the high-rated actors for a movie will therefore probably give your movie a good rating. We will discuss this topic in depth later on when we compare the director of the movie with the actors to see how the director influences the rating and what correlation there is between a directors rating and the rating of his cast.
+So it seems that some actors actually receive great ratings througout a lot of movies. Choosing the high-rated actors for a movie will therefore probably give your movie a good rating. We will discuss this topic further when we compare the director of the movie with the actors to see how the director influences the rating and what correlation there is between a directors rating and the rating of his cast.
 
 
 Of course this does reflect the rating of the movie as a whole more than the individual actor's performance in it. But it would not be unfair to assume that a movie's rating depends on the performance of the lead actor/actress - so the ratings are usable.
@@ -41,7 +41,7 @@ A key attribute to a successfull movie is of course how much money it makes. Som
 There is a *small* correlation here. No movie grossing more than 400 mil. $ has a rating less than 6, which is average. However a lot of movies has grossed less than 100 million dollars and gained ratings above 8. This could have to do with the fact that the gross is *domestic* and not international. So if a very good movie is produced in a "small" country it may not have grossed as much as it would've in America for example.
 
 ### Genres
-There's a lot of different genres in the movie world and there's bound to be some interesting connections to the films. First let's see how the most appreciated genres of movie world compares to how much the genres gross worldwide.
+There's a lot of different genres in the movie world and there's bound to be some interesting connections to the films. First let's see how the most appreciated genres of the movie world compares to how much the genres gross worldwide.
 
 ![Genre Rating Gross](./images/Genre_rating_gross.png)
 
@@ -63,7 +63,7 @@ If we extract only the movies in the big cluster in middle of this graph, we can
 ![Graph of Movies GCC](./images/graph_GCC_movies.png)
 As we can see from this graph, most movies are clustered around the middle of the graph which tells us that a large amount of the movies in this network are highly connected. Thus many movies have some of the same actors, and only a small amount of movies connect to few other movies, meaning that the actors in those movies do not appear in other movies. This could be due to the fact that some movies have only few actors and that those are relatively unknown or perhaps chosen specifically for one movie.
 
-Analysing this network, we see that the distribution of degrees (number of movies one movie is connected to) follows a powerlaw. Therefore we can conclude that our network is scale free. Hence our network consist of a few movies with a lot of connections, so-called **hubs**, and then most of the movies having few connections.
+Analysing this network, we see that the distribution of degrees (number of movies one movie is connected to) follows a powerlaw. Therefore we can conclude that our network is scale free. Meaning that our network consist of a few movies with a lot of connections, so-called **hubs**, and then most of the movies having few connections.
 Here the distribution is plotted on a log-scale.
 ![Degree distribution of movie Graph](./images/movie_graph_degree_distribution.png)
 
@@ -80,7 +80,7 @@ As eigenvector centrality denotes the influence of a node in a network[^eig], it
 
 ![eig](./images/eig_top10.png)
 
-One hypothesis is that movies with many "star-actors" ensure great ratings. But another could be that many "star-actors" actually just ruin it for each other and want to steal the show all of them, resulting in a movie with no real plot or just going in too many different directions.
+One hypothesis is that movies with many "star-actors" ensure great ratings. But another could be that many "star-actors" actually just ruin it for each other and want to steal the show from each other, resulting in a movie with no real plot or just going in too many different directions.
 These measures of centrality does however not really influence the rating of a movie as the correlation is almost 0. So making a movie with actors who are very productive/famous does not guarantee a good rating and neither will high centrality automatically give you a low rating. 
 
 ### Communities
@@ -140,7 +140,7 @@ For the different genres the words seem to fit in pretty well.
 As mentioned in the introduction, we have about ~1200 scripts and ~5000 movies in our dataset. This means that we don't have a manuscript for each movie in our dataset, which leads to a margin of error in the above wordclouds. For example, raspberries may not be as important a term in the whole genre of romance films, as it is for the genre in our dataset.
 
 ### Sentiment
-Let us look at the sentiment of the scripts we have. Using the LabMT wordlist[^labmt], which provides a sentiment score for a lot of english words, we can figure out how positive/negative a script is. A low score like 5000 is pretty negative for a movie script, while a score like 100,000 i a very positive script.
+Let us look at the sentiment of the scripts we have. Using the LabMT wordlist[^labmt], which provides a sentiment score for a lot of english words, we can figure out how positive/negative a script is. A low score like 5000 is pretty negative for a movie script, while a score like 100,000 is a very positive script.
 
 Having calculated the sentiment of the scripts we can see if it relates in any way to the success of a movie. For example, let's see if there is a connection between the sentiment and the IMDb rating of a movie ..  
 
@@ -150,7 +150,7 @@ On the plot we can see that there is *very little*, if any, correlation between 
 
 ### Actor's sentiment
 
-Instead of only looking at movies let's look at actors. Some actor's are more featured in one genre than others, so let's see if there is a relation between a actors sentiment and their IMDb rating. We will calculate the actor's sentiment as an average of the sentiments of the scripts for the movies he has been in. We will be looking at actors who has been in more than 5 movie's, so there is some data to work with. 
+Instead of only looking at movies let's look at actors. Some actor's are more featured in one genre than others, so let's see if there is a relation between an actors sentiment and their IMDb rating. We will calculate the actor's sentiment as an average of the sentiments of the scripts for the movies he has been in. We will be looking at actors who has been in more than 5 movies, so there is some data to work with. 
 
 One this bar graph we see some familiar names, who we might associate with being good actors, suchs as Robert De Niro and Joseph Gordon-Levitt.
 
