@@ -144,7 +144,7 @@ If we correlate their sentiment to their IMDb rating we get this:
 
 ![Actor senti rating](./images/Actor_senti_imdb_rating.png)
 
-Again, it does not seem that the sentiment of the scripts has much to do with the rating of the actor.
+Again, it does not seem that the sentiment of the scripts has much to do with the rating of the actor. This does make sense as some of the most proclaimed actors in the world are very versatile when it comes to genres. Tom Hanks, Rober De Niro and Brad Pitt all star in various genres and are renowned actors.
 
 ## <a name="download-sets"></a> Download Datasets
 So our dataset mainly comprises of a dataset from [kaggle.com](https://www.kaggle.com/deepmatrix/imdb-5000-movie-dataset)
