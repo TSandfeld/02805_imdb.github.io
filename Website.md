@@ -69,6 +69,11 @@ Analysing this network, we see that the distribution of degrees (number of movie
 Here the distribution is plotted on a log-scale.
 ![Degree distribution of movie Graph](./images/movie_graph_degree_distribution.png)
 
+### Betweenness and eigenvector centrality - top 10
+![btc](./images/btc_top10.png)
+
+![eig](./images/eig_top10.png)
+
 
 ### Communities
 To identify communities in this network we have used the Louvain community detection algorithm which identifies communities in a graph, communities being movies that are all closely connected with each other but not so much with other communities. This algorithm found 13 communties in our network. One interesting aspect of this is to discover whether these communties actually correspond to the genres of the movies. We have plotted how much one community consists of the same genre.
@@ -108,6 +113,7 @@ There is only a small positive linear correlation between the duration of a movi
 
 ### *Duration vs. gross, perhaps?*
 
+![Groos duration correlation](./images/gross_duration_scat.png)
 
 
 ## Text analysis of manuscripts
