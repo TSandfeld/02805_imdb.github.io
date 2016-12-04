@@ -165,6 +165,8 @@ So our dataset mainly comprises of [this zip file](https://dl.dropboxusercontent
 
 However we also used IMDbPY so please install that [package](http://imdbpy.sourceforge.net/) as well if you intend to work with our code.
 
+See our Explainer Notebook [here](http://nbviewer.jupyter.org/github/tsandfeld/IMDb/blob/gh-pages/Assignment%20B.ipynb).
+
 ## References
 
 [^wiki]: Wikipedia about IMDb: [https://en.wikipedia.org/wiki/IMDb](https://en.wikipedia.org/wiki/IMDb)
