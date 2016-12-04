@@ -70,7 +70,7 @@ Here the distribution is plotted on a log-scale.
 ### Betweenness and eigenvector centrality - top 10
 **Betweenness**
 
-Betweeness centrality score of a node represents how many times a node acted as a bridge between two other node in a shortest path[^betw]. For our network this means that a high scoring node, like the Transformers movie, has a lot of actors whom are also in many other films. So this tells us that the movies on the list belows either has some very famous/very productive actors or simply a lot of actors in the form of small roles and extras.
+Betweeness centrality score of a node represents how many times a node acted as a bridge between two other nodes in a shortest path[^betw]. For our network this means that a high scoring node, like the Transformers movie, has a lot of actors whom are also in many other films. So this tells us that the movies on the list below either has some very famous/very productive actors or simply a lot of actors in the form of small roles and extras.
 
 ![btc](./images/btc_top10.png)
 
@@ -80,6 +80,8 @@ As eigenvector centrality denotes the influence of a node in a network[^eig], it
 
 ![eig](./images/eig_top10.png)
 
+One hypothesis is that movies with many "star-actors" ensure great ratings. But another could be that many "star-actors" actually just ruin it for each other and want to steal the show all of them, resulting in a movie with no real plot or just going in too many different directions.
+These measures of centrality does however not really influence the rating of a movie as the correlation is almost 0. So making a movie with actors who are very productive/famous does not guarantee a good rating and neither will high centrality automatically give you a low rating. 
 
 ### Communities
 To identify communities in this network we have used the Louvain community detection algorithm which identifies communities in a graph, communities being movies that are all closely connected with each other but not so much with other communities. This algorithm found 13 communties in our network. One interesting aspect of this is to discover whether these communties actually correspond to the genres of the movies. We have plotted how much one community consists of the same genre.
