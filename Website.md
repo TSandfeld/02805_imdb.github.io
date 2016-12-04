@@ -10,13 +10,11 @@
 <h3> By Thomas Sandfeld Nielsen & Lennart Pedersen </h3>
 </center>
 
-See our explainer notebook [here](http://nbviewer.jupyter.org/github/TSandfeld/02805_imdb.github.io/blob/gh-pages/Assignment%20B.ipynb).
-
 ## Introduction
 IMDb is the world's biggest online movie database, launched back in 1990. According to Wikipedia[^wiki] IMDb contains more than 3.9 million movie/tv-show titles and 7.4 million personalities. With this data we will try to uncover some patterns and relationships between the best critically acclaimed and highest grossing movies of all time. We will use techniques from the world of network-, text- and data analysis to accomplish this.
 Although IMDb has millions of titles for us to play around with we don't have the computing power/time to go through all that data. So instead we are going to use a little less data - a little over 4000 titles with all the relevant attributes such as cast, director, year, budget, domestic gross, genres, etc. We also gathered ~1200 moviescripts for text analysis, so we can look at patterns within those. The movies are from different decades, but they are mainly from the late 90's to recent years.
 
-Should you be interested in working with our datasets, then please see the [Download Dataset](#download-sets) section in the end.
+Should you be interested in working with our datasets or just get a more detailed explanation, then please see the [Download Dataset](#download-sets) section in the end.
 
 ## Network analysis
 Let's begin exploring our datasets .. 
@@ -163,7 +161,9 @@ If we correlate their sentiment to their IMDb rating we get this:
 Again, it does not seem that the sentiment of the scripts has much to do with the rating of the actor. This does make sense as some of the most proclaimed actors in the world are very versatile when it comes to genres. Tom Hanks, Rober De Niro and Brad Pitt all star in various genres and are renowned actors.
 
 ## <a name="download-sets"></a> Download Datasets
-So our dataset mainly comprises of a dataset from [kaggle.com](https://www.kaggle.com/deepmatrix/imdb-5000-movie-dataset)
+So our dataset mainly comprises of [this zip file](https://dl.dropboxusercontent.com/s/pjqoqyp17ojeou5/Dataset%20IMDb.zip?dl=0) (direct link) of various .pickles files and the Kaggle set.
+
+However we also used IMDbPY so please install that [package](http://imdbpy.sourceforge.net/) as well if you intend to work with our code.
 
 ## References
 
