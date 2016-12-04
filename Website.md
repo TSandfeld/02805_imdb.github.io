@@ -70,7 +70,15 @@ Here the distribution is plotted on a log-scale.
 ![Degree distribution of movie Graph](./images/movie_graph_degree_distribution.png)
 
 ### Betweenness and eigenvector centrality - top 10
+**Betweenness**
+
+Betweeness centrality score of a node represents how many times a node acted as a bridge between two other node in a shortest path[^betw]. For our network this means that a high scoring node, like the Transformers movie, has a lot of actors whom are also in many other films. So this tells us that the movies on the list belows either has some very famous/very productive actors or simply a lot of actors in the form of small roles and extras.
+
 ![btc](./images/btc_top10.png)
+
+**Eigenvector**
+
+As eigenvector centrality denotes the influence of a node in a network[^eig], it is very likely that the top movies in regards to betweenness centrality also tops this chart. We can see below that the top two movies are the same for betweenness and eigenvector, which means that they are probably connected somehow.
 
 ![eig](./images/eig_top10.png)
 
@@ -80,7 +88,7 @@ To identify communities in this network we have used the Louvain community detec
 
 ![Genre Graph](./images/genre_graph.png)
 
-Each node color in the graph represents a community - so it's easy to see the cyan colored nodes is a pretty private community.
+Each node color in the graph represents a community - so it's easy to see that for example the cyan colored nodes is a pretty private community.
 For each community we have plottet the genres in that community as a pie chart. (Note: the node colors in the graph does not correspond to the color of the genres below)
 
 ![Community genres](./images/genre_com_piecharts_2.png)
@@ -111,9 +119,11 @@ It appears that there is a high positive linear correlation! - some due to the f
 There is only a small positive linear correlation between the duration of a movie and its rating. No real tendency but longer movies have a small advantage..
 ![Duration rating Correlation](./images/corr_duration_rating_scatter.png)
 
-### *Duration vs. gross, perhaps?*
+When it comes to the movie's gross vs. its duration, it doesn't reveal anything interesting either.
 
-![Groos duration correlation](./images/gross_duration_scat.png)
+![Gross duration correlation](./images/gross_duration_scat.png)
+
+Note that there a quite a few points that are above 300 mins (5 hrs), which means that there must have been something wrong with the data or it's a TV-series instead of a movie.
 
 
 ## Text analysis of manuscripts
@@ -160,3 +170,7 @@ So our dataset mainly comprises of a dataset from [kaggle.com](https://www.kaggl
 [^wiki]: Wikipedia about IMDb: [https://en.wikipedia.org/wiki/IMDb](https://en.wikipedia.org/wiki/IMDb)
 
 [^labmt]: Wordlist article: [http://journals.plos.org/plosone/article?id=10.1371/journal.pone.0026752](http://journals.plos.org/plosone/article?id=10.1371/journal.pone.0026752)
+
+[^betw]: Betweenness centrality wiki: [https://en.wikipedia.org/wiki/Centrality#Betweenness_centrality](https://en.wikipedia.org/wiki/Centrality#Betweenness_centrality)
+
+[^eig]: Eigenvector centrality wiki: [https://en.wikipedia.org/wiki/Eigenvector_centrality](https://en.wikipedia.org/wiki/Eigenvector_centrality)

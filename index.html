@@ -402,13 +402,27 @@ As we can see from this graph, most movies are clustered around the middle of th
 Here the distribution is plotted on a log-scale.
 <img src="./images/movie_graph_degree_distribution.png" alt="Degree distribution of movie Graph"></p>
 
-<h3 id="toc_5">Communities</h3>
+<h3 id="toc_5">Betweenness and eigenvector centrality - top 10</h3>
+
+<p><strong>Betweenness</strong></p>
+
+<p>Betweeness centrality score of a node represents how many times a node acted as a bridge between two other node in a shortest path<sup id="fnref2"><a href="#fn2" rel="footnote">2</a></sup>. For our network this means that a high scoring node, like the Transformers movie, has a lot of actors whom are also in many other films. So this tells us that the movies on the list belows either has some very famous/very productive actors or simply a lot of actors in the form of small roles and extras.</p>
+
+<p><img src="./images/btc_top10.png" alt="btc"></p>
+
+<p><strong>Eigenvector</strong></p>
+
+<p>As eigenvector centrality denotes the influence of a node in a network<sup id="fnref3"><a href="#fn3" rel="footnote">3</a></sup>, it is very likely that the top movies in regards to betweenness centrality also tops this chart. We can see below that the top two movies are the same for betweenness and eigenvector, which means that they are probably connected somehow.</p>
+
+<p><img src="./images/eig_top10.png" alt="eig"></p>
+
+<h3 id="toc_6">Communities</h3>
 
 <p>To identify communities in this network we have used the Louvain community detection algorithm which identifies communities in a graph, communities being movies that are all closely connected with each other but not so much with other communities. This algorithm found 13 communties in our network. One interesting aspect of this is to discover whether these communties actually correspond to the genres of the movies. We have plotted how much one community consists of the same genre.</p>
 
 <p><img src="./images/genre_graph.png" alt="Genre Graph"></p>
 
-<p>Each node color in the graph represents a community - so it&#39;s easy to see the cyan colored nodes is a pretty private community.
+<p>Each node color in the graph represents a community - so it&#39;s easy to see that for example the cyan colored nodes is a pretty private community.
 For each community we have plottet the genres in that community as a pie chart. (Note: the node colors in the graph does not correspond to the color of the genres below)</p>
 
 <p><img src="./images/genre_com_piecharts_2.png" alt="Community genres"></p>
@@ -418,7 +432,7 @@ From the plot we find that documentaries tend to use the same group of actors as
 Eventhough there are some differences between the other 11 communities they are quite representative of the amount of movies in each genre in total. E.g comedy, drama and action take up big chunks for every community those genres being the largest. 
 These discoveries lead to the conclusion that most movies have quite versatile actors who appear in a lot of different movie genres.  </p>
 
-<h3 id="toc_6">Director profiling</h3>
+<h3 id="toc_7">Director profiling</h3>
 
 <p>Let&#39;s see what we can make of the different directors in the set. Let&#39;s first find the best and worst directors ... again we will set a requirement in the form that they should&#39;ve directed at least 5 movies.
 <img src="./images/Director_rating_10.png" alt="Top directors">
@@ -439,7 +453,11 @@ It appears that there is a high positive linear correlation! - some due to the f
 <p>There is only a small positive linear correlation between the duration of a movie and its rating. No real tendency but longer movies have a small advantage..
 <img src="./images/corr_duration_rating_scatter.png" alt="Duration rating Correlation"></p>
 
-<h3 id="toc_7"><em>Duration vs. gross, perhaps?</em></h3>
+<p>When it comes to the movie&#39;s gross vs. its duration, it doesn&#39;t reveal anything interesting either.</p>
+
+<p><img src="./images/gross_duration_scat.png" alt="Gross duration correlation"></p>
+
+<p>Note that there a quite a few points that are above 300 mins (5 hrs), which means that there must have been something wrong with the data or it&#39;s a TV-series instead of a movie.</p>
 
 <h2 id="toc_8">Text analysis of manuscripts</h2>
 
@@ -457,7 +475,7 @@ Using a technique called Term Frequency - Inverse Document Frequency, or TF-IDF,
 
 <h3 id="toc_10">Sentiment</h3>
 
-<p>Let us look at the sentiment of the scripts we have. Using the LabMT wordlist<sup id="fnref2"><a href="#fn2" rel="footnote">2</a></sup>, which provides a sentiment score for a lot of english words, we can figure out how positive/negative a script is. A low score like 5000 is pretty negative for a movie script, while a score like 100,000 i a very positive script.</p>
+<p>Let us look at the sentiment of the scripts we have. Using the LabMT wordlist<sup id="fnref4"><a href="#fn4" rel="footnote">4</a></sup>, which provides a sentiment score for a lot of english words, we can figure out how positive/negative a script is. A low score like 5000 is pretty negative for a movie script, while a score like 100,000 i a very positive script.</p>
 
 <p>Having calculated the sentiment of the scripts we can see if it relates in any way to the success of a movie. For example, let&#39;s see if there is a connection between the sentiment and the IMDb rating of a movie ..  </p>
 
@@ -477,7 +495,7 @@ Using a technique called Term Frequency - Inverse Document Frequency, or TF-IDF,
 
 <p><img src="./images/Actor_senti_imdb_rating.png" alt="Actor senti rating"></p>
 
-<p>Again, it does not seem that the sentiment of the scripts has much to do with the rating of the actor.</p>
+<p>Again, it does not seem that the sentiment of the scripts has much to do with the rating of the actor. This does make sense as some of the most proclaimed actors in the world are very versatile when it comes to genres. Tom Hanks, Rober De Niro and Brad Pitt all star in various genres and are renowned actors.</p>
 
 <h2 id="toc_12"><a name="download-sets"></a> Download Datasets</h2>
 
@@ -494,7 +512,15 @@ Using a technique called Term Frequency - Inverse Document Frequency, or TF-IDF,
 </li>
 
 <li id="fn2">
-<p>Wordlist article: <a href="http://journals.plos.org/plosone/article?id=10.1371/journal.pone.0026752">http://journals.plos.org/plosone/article?id=10.1371/journal.pone.0026752</a>&nbsp;<a href="#fnref2" rev="footnote">&#8617;</a></p>
+<p>Betweenness centrality wiki: <a href="https://en.wikipedia.org/wiki/Centrality#Betweenness_centrality">https://en.wikipedia.org/wiki/Centrality#Betweenness_centrality</a>&nbsp;<a href="#fnref2" rev="footnote">&#8617;</a></p>
+</li>
+
+<li id="fn3">
+<p>Eigenvector centrality wiki: <a href="https://en.wikipedia.org/wiki/Eigenvector_centrality">https://en.wikipedia.org/wiki/Eigenvector_centrality</a>&nbsp;<a href="#fnref3" rev="footnote">&#8617;</a></p>
+</li>
+
+<li id="fn4">
+<p>Wordlist article: <a href="http://journals.plos.org/plosone/article?id=10.1371/journal.pone.0026752">http://journals.plos.org/plosone/article?id=10.1371/journal.pone.0026752</a>&nbsp;<a href="#fnref4" rev="footnote">&#8617;</a></p>
 </li>
 
 </ol>
