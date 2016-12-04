@@ -379,13 +379,13 @@ There is a <em>small</em> correlation here. No movie grossing more than 400 mil.
 
 <p><img src="./images/Genre_rating_gross.png" alt="Genre Rating Gross"></p>
 
-<p>From comparing the two plots we can make some interesting discoveries. E.g. Film-noir which has the highest average IMDb score is actually the film genre with the lowest gross. To get a clearer view on whether there is a correlation between the gross and rating we have plotted the average rating versus the average gross for each genre in a scatter plot and with a linear fit.</p>
+<p>From comparing the two plots we can make some interesting discoveries. E.g. Film-noir which has the highest average IMDb score is actually the film genre with the lowest gross. But in the case of our dataset this is probably just an anomaly as it doesn&#39;t make sense that whole genre of Film-Noir hasn&#39;t grossed a single dollar.</p>
+
+<p>To get a clearer view on whether there is a correlation between the gross and rating we have plotted the average rating versus the average gross for each genre in a scatter plot and with a linear fit.</p>
 
 <p><img src="./images/genre_rating_gross_avg_scat.png" alt="Average rating gross correlation">
 The correlation coefficient for the two averages is actually <strong>-0.523!</strong>
 So if you want to earn millions of dollars you should not expect to also receive a high IMDb rating. This a bit surprising and tells us that the correlation between a movie&#39;s rating and its&#39; gross is actually negative. The IMDb rating is thereby not the only indicator as to whether your movie is successful or not. </p>
-
-<p>This gives a rather unusual result as the best rated genre is the genre that is least profitable! But in the case of our dataset this is probably just an anomaly as it doesn&#39;t make sense that whole genre of Film-Noir hasn&#39;t grossed a single dollar.</p>
 
 <h3 id="toc_4">Movie connections</h3>
 
@@ -408,6 +408,9 @@ Here the distribution is plotted on a log-scale.
 
 <p><img src="./images/genre_graph.png" alt="Genre Graph"></p>
 
+<p>Each node color in the graph represents a community - so it&#39;s easy to see the cyan colored nodes is a pretty private community.
+For each community we have plottet the genres in that community as a pie chart. (Note: the node colors in the graph does not correspond to the color of the genres below)</p>
+
 <p><img src="./images/genre_com_piecharts_2.png" alt="Community genres"></p>
 
 <p>As you can see, most communities in our network consist of multiple genres which tells us that generally speaking actors do not tend to be one-sided considering the film genres they are in.
@@ -417,30 +420,30 @@ These discoveries lead to the conclusion that most movies have quite versatile a
 
 <h3 id="toc_6">Director profiling</h3>
 
-<p>Director/Actor rating - correlation
-<img src="./images/Director_rating_10.png" alt="Top directors"></p>
+<p>Let&#39;s see what we can make of the different directors in the set. Let&#39;s first find the best and worst directors ... again we will set a requirement in the form that they should&#39;ve directed at least 5 movies.
+<img src="./images/Director_rating_10.png" alt="Top directors">
+On the two lists we see some familiar names, Christopher Nolan, Quetin Tarantino, James Cameron - all great directors. But are these directors just so good at their profession that they could produce a brilliant movie with any cast? Let&#39;s look at which actors the best director, Christopher Nolan, and the worst director, Brian Levant, uses the most and what their IMDb ratings are. </p>
 
 <p><img src="./images/Director_actor_occur_top_1.png" alt="Director profile 1"></p>
 
-<p>Director profile 2](./images/Director<em>actor</em>occur<em>top</em>2.png)</p>
-
-<p>Director profile 3](./images/Director<em>actor</em>occur<em>top</em>3.png)</p>
-
 <p><img src="./images/Director_actor_occur_bot_1.png" alt="Director profile 4"></p>
 
-<p>Director profile 5](./images/Director<em>actor</em>occur<em>bot</em>2.png)</p>
+<p>The blue dots are how many times an actor has been in the particular directors movies, and the red dots are the actors IMDb rating.
+It seems that Nolan are fond of particular actors such as Michael Caine 6 appearences, Russ Fega 5 appearences and Cillian Murphy &amp; Christian Bale, 4 appearences - whereas Levant has only used one actor 3 times, Harvey Korman. When looking at the average IMDb rating for the actors on the righthand side of the graph, it seems that there is some sort of relation.</p>
 
-<p>Director profile 6](./images/Director<em>actor</em>occur<em>bot</em>3.png)</p>
+<p>So let&#39;s put all directors and the average IMDb rating of their favorite cast (min. 2 appearences) and see if this holds.</p>
 
 <p><img src="./images/Director_r_cast_r_scat.png" alt="Dicetor Actor Correlation">
-High positive linear correlation! - some due to the fact that the actors obviously are in some of the same movies as the directors. </p>
+It appears that there is a high positive linear correlation! - some due to the fact that the actors obviously are in some of the same movies as the directors. </p>
 
 <p>There is only a small positive linear correlation between the duration of a movie and its rating. No real tendency but longer movies have a small advantage..
 <img src="./images/corr_duration_rating_scatter.png" alt="Duration rating Correlation"></p>
 
-<h2 id="toc_7">Text analysis of manuscripts</h2>
+<h3 id="toc_7"><em>Duration vs. gross, perhaps?</em></h3>
 
-<h3 id="toc_8">Term Frequency</h3>
+<h2 id="toc_8">Text analysis of manuscripts</h2>
+
+<h3 id="toc_9">Term Frequency</h3>
 
 <p>We&#39;ve looked quite a bit on how different attributes relate in our network of movies/actors. Let&#39;s now look at some manuscripts. 
 Using a technique called Term Frequency - Inverse Document Frequency, or TF-IDF, we can figure how important a word in a script is for our total collection of scripts. So by doing this we can find the words that are most important for each genre of movies in our dataset.</p>
@@ -452,7 +455,7 @@ Using a technique called Term Frequency - Inverse Document Frequency, or TF-IDF,
 
 <p>As mentioned in the introduction, we have about ~1200 scripts and ~5000 movies in our dataset. This means that we don&#39;t have a manuscript for each movie in our dataset, which leads to a margin of error in the above wordclouds. For example, raspberries may not be as important a term in the whole genre of romance films, as it is for the genre in our dataset.</p>
 
-<h3 id="toc_9">Sentiment</h3>
+<h3 id="toc_10">Sentiment</h3>
 
 <p>Let us look at the sentiment of the scripts we have. Using the LabMT wordlist<sup id="fnref2"><a href="#fn2" rel="footnote">2</a></sup>, which provides a sentiment score for a lot of english words, we can figure out how positive/negative a script is. A low score like 5000 is pretty negative for a movie script, while a score like 100,000 i a very positive script.</p>
 
@@ -462,7 +465,7 @@ Using a technique called Term Frequency - Inverse Document Frequency, or TF-IDF,
 
 <p>On the plot we can see that there is <em>very little</em>, if any, correlation between a movie&#39;s IMDb rating and the sentiment of the movie&#39;s script. This does make sense as a lot of very well liked movies are drama and action movie&#39;s which tend to be more intense in the language than other movies.</p>
 
-<h3 id="toc_10">Do a movie gross vs sentiment <em>here</em> or not - der er kun omkring 600 film der passer til scripts og penge dict&#39;en og den plottet viser ikke så meget. Corcoeff på 0.171.</h3>
+<h3 id="toc_11">Actor&#39;s sentiment</h3>
 
 <p>Instead of only looking at movies let&#39;s look at actors. Some actor&#39;s are more featured in one genre than others, so let&#39;s see if there is a relation between a actors sentiment and their IMDb rating. We will calculate the actor&#39;s sentiment as an average of the sentiments of the scripts for the movies he has been in. We will be looking at actors who has been in more than 5 movie&#39;s, so there is some data to work with. </p>
 
@@ -476,11 +479,11 @@ Using a technique called Term Frequency - Inverse Document Frequency, or TF-IDF,
 
 <p>Again, it does not seem that the sentiment of the scripts has much to do with the rating of the actor.</p>
 
-<h2 id="toc_11"><a name="download-sets"></a> Download Datasets</h2>
+<h2 id="toc_12"><a name="download-sets"></a> Download Datasets</h2>
 
 <p>So our dataset mainly comprises of a dataset from <a href="https://www.kaggle.com/deepmatrix/imdb-5000-movie-dataset">kaggle.com</a></p>
 
-<h2 id="toc_12">References</h2>
+<h2 id="toc_13">References</h2>
 
 <div class="footnotes">
 <hr>

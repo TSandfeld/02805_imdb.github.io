@@ -47,13 +47,13 @@ There's a lot of different genres in the movie world and there's bound to be som
 
 ![Genre Rating Gross](./images/Genre_rating_gross.png)
 
-From comparing the two plots we can make some interesting discoveries. E.g. Film-noir which has the highest average IMDb score is actually the film genre with the lowest gross. To get a clearer view on whether there is a correlation between the gross and rating we have plotted the average rating versus the average gross for each genre in a scatter plot and with a linear fit.
+From comparing the two plots we can make some interesting discoveries. E.g. Film-noir which has the highest average IMDb score is actually the film genre with the lowest gross. But in the case of our dataset this is probably just an anomaly as it doesn't make sense that whole genre of Film-Noir hasn't grossed a single dollar.
+
+To get a clearer view on whether there is a correlation between the gross and rating we have plotted the average rating versus the average gross for each genre in a scatter plot and with a linear fit.
 
 ![Average rating gross correlation](./images/genre_rating_gross_avg_scat.png)
 The correlation coefficient for the two averages is actually **-0.523!**
 So if you want to earn millions of dollars you should not expect to also receive a high IMDb rating. This a bit surprising and tells us that the correlation between a movie's rating and its' gross is actually negative. The IMDb rating is thereby not the only indicator as to whether your movie is successful or not. 
-
-This gives a rather unusual result as the best rated genre is the genre that is least profitable! But in the case of our dataset this is probably just an anomaly as it doesn't make sense that whole genre of Film-Noir hasn't grossed a single dollar.
 
 ### Movie connections
 Let's now look at how all these movies actually are connected. We have created a network of movies where two movies are connected if one or more actors appear in the both movies. By plotting the network we get what is shown as a graph below.
@@ -75,7 +75,8 @@ To identify communities in this network we have used the Louvain community detec
 
 ![Genre Graph](./images/genre_graph.png)
 
-For each community we have plottet the genres in that community as a pie chart. 
+Each node color in the graph represents a community - so it's easy to see the cyan colored nodes is a pretty private community.
+For each community we have plottet the genres in that community as a pie chart. (Note: the node colors in the graph does not correspond to the color of the genres below)
 
 ![Community genres](./images/genre_com_piecharts_2.png)
 
@@ -86,26 +87,26 @@ These discoveries lead to the conclusion that most movies have quite versatile a
 
 
 ### Director profiling
-Director/Actor rating - correlation
+Let's see what we can make of the different directors in the set. Let's first find the best and worst directors ... again we will set a requirement in the form that they should've directed at least 5 movies.
 ![Top directors](./images/Director_rating_10.png)
+On the two lists we see some familiar names, Christopher Nolan, Quetin Tarantino, James Cameron - all great directors. But are these directors just so good at their profession that they could produce a brilliant movie with any cast? Let's look at which actors the best director, Christopher Nolan, and the worst director, Brian Levant, uses the most and what their IMDb ratings are. 
 
 ![Director profile 1](./images/Director_actor_occur_top_1.png)
 
-Director profile 2](./images/Director_actor_occur_top_2.png)
-
-Director profile 3](./images/Director_actor_occur_top_3.png)
-
 ![Director profile 4](./images/Director_actor_occur_bot_1.png)
 
-Director profile 5](./images/Director_actor_occur_bot_2.png)
+The blue dots are how many times an actor has been in the particular directors movies, and the red dots are the actors IMDb rating.
+It seems that Nolan are fond of particular actors such as Michael Caine 6 appearences, Russ Fega 5 appearences and Cillian Murphy & Christian Bale, 4 appearences - whereas Levant has only used one actor 3 times, Harvey Korman. When looking at the average IMDb rating for the actors on the righthand side of the graph, it seems that there is some sort of relation.
 
-Director profile 6](./images/Director_actor_occur_bot_3.png)
+So let's put all directors and the average IMDb rating of their favorite cast (min. 2 appearences) and see if this holds.
 
 ![Dicetor Actor Correlation](./images/Director_r_cast_r_scat.png)
-High positive linear correlation! - some due to the fact that the actors obviously are in some of the same movies as the directors. 
+It appears that there is a high positive linear correlation! - some due to the fact that the actors obviously are in some of the same movies as the directors. 
 
 There is only a small positive linear correlation between the duration of a movie and its rating. No real tendency but longer movies have a small advantage..
 ![Duration rating Correlation](./images/corr_duration_rating_scatter.png)
+
+### *Duration vs. gross, perhaps?*
 
 
 
@@ -131,7 +132,7 @@ Having calculated the sentiment of the scripts we can see if it relates in any w
 
 On the plot we can see that there is *very little*, if any, correlation between a movie's IMDb rating and the sentiment of the movie's script. This does make sense as a lot of very well liked movies are drama and action movie's which tend to be more intense in the language than other movies.
 
-### Do a movie gross vs sentiment *here* or not - der er kun omkring 600 film der passer til scripts og penge dict'en og den plottet viser ikke så meget. Corcoeff på 0.171.
+### Actor's sentiment
 
 Instead of only looking at movies let's look at actors. Some actor's are more featured in one genre than others, so let's see if there is a relation between a actors sentiment and their IMDb rating. We will calculate the actor's sentiment as an average of the sentiments of the scripts for the movies he has been in. We will be looking at actors who has been in more than 5 movie's, so there is some data to work with. 
 
